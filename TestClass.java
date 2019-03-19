@@ -1,40 +1,84 @@
 package filecomander;
 
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
 
 public class TestClass {
-
+	
+	public static String filepath1;
+	public static String filepath2;
+	public static File file1,file2;
+	
 	public static void main(String[] args) throws FileNotFoundException, IOException, Exception  {
 		Scanner input=new Scanner(System.in);
-		  System.out.println("============================");
-		    System.out.println("|   MENU SELECTION DEMO    |");
-		    System.out.println("============================");
-		    System.out.println("| Options:                 |");
-		    System.out.println("|        INFO	           |");
-		    System.out.println("|        DELETE            |");
-		    System.out.println("|        Exit              |");
-		    System.out.println("============================");
+			System.out.println("======================================");
+		    System.out.println("|        MENU SELECTION DEMO         |");
+		    System.out.println("======================================");
+		    System.out.println("|   Type command like written below  |");
+		    System.out.println("| Options:                           |");
+		    System.out.println("|        LIST	                     |");
+		    System.out.println("|        INFO	                     |");
+		    System.out.println("|        CREATE_DIR	             |");
+		    System.out.println("|        RENAME	                     |");
+		    System.out.println("|        COPY	                     |");
+		    System.out.println("|        MOVE	                     |");
+		    System.out.println("|        DELETE                      |");
+		    System.out.println("|        Exit                        |");
+		    System.out.println("======================================");
 		    System.out.println("Select options: ");
 		
-		int comand=input.nextInt();
+		String comand=input.nextLine();
 			switch(comand) {
 		
-			case  (1):
+			case  ("LIST"):
 				System.out.println("Unesite putanju do fajla/foldera za koji zelite da vidite informacije");
-				String filepath=input.nextLine();
-				File file= new File(filepath);
-				FileComanderTest.info(file);
+				filepath1=input.nextLine();
+				file1= new File(filepath1);
+				FileComander.list(file1);
 				break;
-			case  (2):
+			case  ("INFO"):
+				System.out.println("Unesite putanju do fajla/foldera za koji zelite da vidite informacije");
+				filepath1=input.nextLine();
+				file1= new File(filepath1);
+				FileComander.info(file1);
+				break;
+			case  ("CREATE_DIR"):
+				System.out.println("Unesite putanju do fajla/foldera za koji zelite da vidite informacije");
+				filepath1=input.nextLine();
+				file1= new File(filepath1);
+				FileComander.makeSingleDirectory(file1);
+				break;
+			case  ("RENAME"):
+				System.out.println("Unesite putanju do fajla/foldera koji zelite da preimenujete");
+				filepath1=input.nextLine();
+				file1= new File(filepath1);
+				System.out.println("Unesite putanju sa novim imenom  fajla/foldera");
+				filepath2=input.nextLine();
+				file2= new File(filepath2);
+				FileComander.renameDirFile(file1, file2);
+				break;
+			case  ("COPY"):
+				System.out.println("Unesite putanju do fajla/foldera za koji zelite da vidite informacije");
+				filepath1=input.nextLine();
+				file1= new File(filepath1);
+				FileComander.info(file1);
+				break;
+			case  ("MOVE"):
+				System.out.println("Unesite putanju do fajla/foldera za koji zelite da vidite informacije");
+				filepath1=input.nextLine();
+				file1= new File(filepath1);
+				FileComander.info(file1);
+				break;
+			case  ("DELETE"):
 				System.out.println("Unesite putanju do fajla/foldera za koji zelite da izbrisete");
-				String filepath1=input.nextLine();
-				File file1= new File(filepath1);
-				FileComanderTest.deleteDirFile(file1);
+				filepath1=input.nextLine();
+				file1= new File(filepath1);
+				FileComander.deleteDirFile(file1);
 				break;
-			case  (3):
+			case  ("EXIT"):
 				System.out.println("Izlazite iz programa");
 				break;
 			default:
@@ -43,11 +87,8 @@ public class TestClass {
 		}
 		
 		
-	
-	
-		
-		String filepath2=input.nextLine();
-		File file1=new File(filepath2);
+		//String filepath2=input.nextLine();
+		//E:\Pera\AndjelaFile file1=new File(filepath2);
 		input.close();
 		//final File folder = new File(fn);
 		//final FileTime folder1=FileTime.getLastModifiedTime();
