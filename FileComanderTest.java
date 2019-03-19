@@ -17,20 +17,16 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
 
-public class FileComanderTest  {
-
-	
-		
+public class FileComander {
+		//
 		public static  void list( File folder) {
 			if(folder.isDirectory()){
 				System.out.println(folder.getName() +"  je Direktorijum");
-			    for (File fileEntry : folder.listFiles()) {
-			        if (fileEntry.isDirectory()) {
-			        	System.out.println("+++"+fileEntry.getName()+" Je Direktorijum");
-			        	//list(folder);
-			           // listFilesForFolder(fileEntry);
+			    for (File files: folder.listFiles()) {
+			        if (files.isDirectory()) {
+			        	System.out.println("+++"+files.getName()+" Je Direktorijum");
 			        } else {
-			            System.out.println(fileEntry.getName()+" Je File");
+			            System.out.println(files.getName()+" Je File");
 			        }
 			    }
 			}
@@ -38,17 +34,7 @@ public class FileComanderTest  {
 				 System.out.println(folder.getName()+" Je File");
 			}
 		}
-		/*public static void info(final File folder) {
-			System.out.println(folder.getName());
-			
-			System.out.println(folder.getAbsolutePath());
-			System.out.println(folder.getTotalSpace());
-			System.out.println(folder.getUsableSpace());
-			System.out.println(folder.lastModified());
-			
-			
-		}*/
-		
+	
 		/*Informacije na drugi nacin, kreiramo funkciju koja na iscitava informavije o fileu*/
 		
 		public static void info(File file) throws Exception {
@@ -67,10 +53,8 @@ public class FileComanderTest  {
 	        }catch(Exception e){
 	        	e.printStackTrace();
 	        }
-			
-			
+				
 		}
-		
 		
 		public static void makeSingleDirectory(File file) {
 	        //To create single directory/folder like "D:\\Directory1"
